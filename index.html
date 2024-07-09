@@ -1,0 +1,225 @@
+"use client";
+import React from "react";
+
+function MainComponent() {
+  const [selectedImage, setSelectedImage] = React.useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+  const members = [
+    {
+      name: "ヒグマ",
+      music: "SHISHAMO",
+      instrument: "Vo.Ba.",
+      image:
+        "https://ucarecdn.com/d369b95d-a8cb-4495-bb99-32b721823712/-/format/auto/",
+    },
+    {
+      name: "ゴキ",
+      music: "Radwimps",
+      instrument: "Ba.",
+      image:
+        "https://ucarecdn.com/1f768e1a-c2fe-4bce-89ac-8218a9a72b9a/-/format/auto/",
+    },
+    {
+      name: "ヒロキ",
+      music: "マカロニえんぴつ",
+      instrument: "Dr.",
+      image:
+        "https://ucarecdn.com/e95845f8-34ff-46b8-a571-f8c063a09ef9/-/format/auto/",
+    },
+  ];
+
+  const photos = [
+    "https://ucarecdn.com/e3e86173-bb52-434f-8229-e02ab4d75322/-/format/auto/",
+    "https://ucarecdn.com/1369711c-fbb3-4a59-b55a-09912a90419b/-/format/auto/",
+    "https://ucarecdn.com/6768fb2f-cb6f-46e3-8d7a-0903cddb1637/-/format/auto/",
+    "https://ucarecdn.com/8ff05037-447d-485f-a6f1-558987655a87/-/format/auto/",
+    "https://ucarecdn.com/d761db67-c54c-43b1-bb5d-08ed7954961d/-/format/auto/",
+    "https://ucarecdn.com/56481d0c-3ae6-4f15-8ab3-2b5cba9d90a3/-/format/auto/",
+    "https://ucarecdn.com/5e169fd6-c130-4f51-a621-bddb3be3b458/-/format/auto/",
+    "https://ucarecdn.com/6d712163-0985-4051-899b-205c639d21b3/-/format/auto/",
+    "https://ucarecdn.com/7bfd0891-3610-48e2-9f74-b9d7f42be045/-/format/auto/",
+  ];
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [photos.length]);
+
+  const currentImage = photos[currentImageIndex];
+
+  return (
+    <div className="bg-black min-h-screen text-white font-m-plus-1">
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img
+            src={selectedImage}
+            alt="拡大画像"
+            className="max-w-full max-h-full"
+          />
+        </div>
+      )}
+      <div className="relative">
+        <img
+          src="https://ucarecdn.com/d06892af-30c5-4ea6-8c93-33734c2cf213/-/format/auto/"
+          alt="背景画像"
+          className="w-full h-[400px] object-cover"
+        />
+        <h1
+          className="absolute inset-0 flex items-center justify-center text-white text-4xl"
+          style={{ fontFamily: "'M PLUS 1', sans-serif'", fontWeight: 200 }}
+        >
+          ロック研究所
+        </h1>
+      </div>
+      <div className="px-8 py-16">
+        <section id="about" className="mb-16">
+          <h2
+            className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'M PLUS 1', sans-serif'" }}
+          >
+            About
+          </h2>
+          <p className="mb-8" style={{ fontFamily: "'M PLUS 1', sans-serif'" }}>
+            私たちロック研究所&MUSIC
+            LIFEは軽音サークルで、定期的にライブ活動を行い、ライブに向けて日々練習をしています！
+            <br />
+            ロックやパンク、メタル、そのほかにも様々なジャンルの音楽が楽しめるサークルです！
+            <br />
+            楽器初心者、経験者ともに大歓迎で、音楽に興味がある、演奏してみたい、という方は是非見に来てください！
+          </p>
+          <blockquote className="twitter-tweet" data-media-max-width="560">
+            <p lang="ja" dir="ltr">
+              福井大学に合格された皆様おめでとうございます🌸
+              <br />
+              ロック研究所&amp;Music Lifeです！
+              <br />
+              サークルの紹介動画を作成したのでぜひサークル選びの参考にしたください！
+              <a href="https://twitter.com/hashtag/%E6%98%A5%E3%81%8B%E3%82%89%E7%A6%8F%E4%BA%95%E5%A4%A7%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">
+                #春から福井大学
+              </a>{" "}
+              <a href="https://twitter.com/hashtag/%E6%98%A5%E3%81%8B%E3%82%89%E7%A6%8F%E5%A4%A7?src=hash&amp;ref_src=twsrc%5Etfw">
+                #春から福大
+              </a>{" "}
+              <a href="https://twitter.com/hashtag/%E5%88%9D%E5%BF%83%E8%80%85%E6%AD%93%E8%BF%8E?src=hash&amp;ref_src=twsrc%5Etfw">
+                #初心者歓迎
+              </a>{" "}
+              <a href="https://twitter.com/hashtag/%E8%BB%BD%E9%9F%B3?src=hash&amp;ref_src=twsrc%5Etfw">
+                #軽音
+              </a>{" "}
+              <a href="https://t.co/sgmJtDHIoN">pic.twitter.com/sgmJtDHIoN</a>
+            </p>
+            &mdash; 福井大学 ロック研究所＆MUSICLIFE (@f_Rock_en){" "}
+            <a href="https://twitter.com/f_Rock_en/status/1771954794384536014?ref_src=twsrc%5Etfw">
+              March 24, 2024
+            </a>
+          </blockquote>
+          <script
+            async
+            src="https://platform.twitter.com/widgets.js"
+            charSet="utf-8"
+          ></script>
+        </section>
+        <section id="photos">
+          <h2
+            className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'M PLUS 1', sans-serif'" }}
+          >
+            PhotoShot
+          </h2>
+          <div className="flex justify-center mb-16">
+            <img
+              src={currentImage}
+              alt="自動的に切り替わる写真"
+              className="w-auto h-[200px] object-contain cursor-pointer"
+              onClick={() => setSelectedImage(currentImage)}
+            />
+          </div>
+        </section>
+        <section id="member" className="mb-16">
+          <h2
+            className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'M PLUS 1', sans-serif'" }}
+          >
+            幹部Member
+          </h2>
+          <div className="space-y-8">
+            {members.map((member, index) => {
+              const memberName = `${member.name}の写真`;
+              const memberImageClasses =
+                index === 2
+                  ? "w-[100px] h-[100px] object-cover m-0 cursor-pointer transform rotate-90"
+                  : "w-[100px] h-[100px] object-cover m-0 cursor-pointer";
+              return (
+                <div key={index} className="flex items-center space-x-8">
+                  <img
+                    src={member.image}
+                    alt={memberName}
+                    className={memberImageClasses}
+                    onClick={() => setSelectedImage(member.image)}
+                  />
+                  <div>
+                    <p
+                      className="text-xl font-semibold mb-2 truncate"
+                      style={{
+                        fontFamily: "'M PLUS 1', sans-serif'",
+                        maxWidth: "200px",
+                      }}
+                    >
+                      {member.name}
+                    </p>
+                    <p className="text-sm mb-1">好きな音楽: {member.music}</p>
+                    <p className="text-sm">担当: {member.instrument}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+        <section id="schedule" className="mb-16">
+          <h2
+            className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'M PLUS 1', sans-serif'" }}
+          >
+            Schedule
+          </h2>
+          <ul className="space-y-4">
+            <li>1月: 新年会</li>
+            <li>4月: 新入生歓迎ライブ</li>
+            <li>7月: サマーコンサート</li>
+            <li>12月: クリスマスライブ</li>
+          </ul>
+        </section>
+        <section id="sns" className="mb-16">
+          <h2
+            className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'M PLUS 1', sans-serif'" }}
+          >
+            SNS
+          </h2>
+          <div className="space-x-8">
+            <a
+              href="https://www.instagram.com/f_rock_en/?igshid=1tbc7qgn641br"
+              className="text-2xl"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com/f_Rock_en" className="text-2xl">
+              <i className="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+module.exports = MainComponent;
+
+export default MainComponent;
